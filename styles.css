@@ -1,3 +1,7 @@
 .footer {
     text-align: center;
 }
+
+.pricelist {
+    list-style: none;
+}

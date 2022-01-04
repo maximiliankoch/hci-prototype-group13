@@ -5,3 +5,69 @@
 .pricelist {
     list-style: none;
 }
+
+.form-progress {
+    position: relative;
+    max-width: 75%;
+    margin: auto;
+}
+
+.form-progress ul {
+    list-style: none;
+    padding: 0;
+}
+
+.form-progress ul li {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    z-index: 200;
+    position: relative;
+}
+
+.form-progress ul li.highlighted {
+    color: #3268ff;
+    background-color: #3268ff;
+}
+
+.form-progress ul li::after {
+    position: absolute;
+    top: 26px;
+    left: -15px;
+    font-size: 0.7rem;
+    width: 90px;
+}
+
+#select-date::after {
+    content: "Datum ausgewählt";
+    text-align: center;
+    left: -35px;
+}
+
+#select-time::after {
+    content: "Uhrzeit ausgewählt";
+    text-align: center;
+    left: -35px;
+}
+
+#select-table::after {
+    content: "Tisch ausgewählt";
+    text-align: center;
+    left: -35px;
+}
+
+#input-data::after {
+    content: "Kontaktinformationen hinterlegt";
+    text-align: center;
+    left: -35px;
+}
+
+.form-progress .progress {
+    height: 0.8rem;
+    width: 100%;
+    top: 28px;
+    position: absolute;
+    background-color: #f0f0f0;
+    border-radius: 10px
+}

@@ -37,6 +37,18 @@
 
     <h2 style="text-align: center">Reservieren</h2>
 
+    <div class="form-progress py-4">
+        <ul class="d-flex align-items-center justify-content-between">
+            <li id="select-date"></li>
+            <li id="select-time"></li>
+            <li id="select-table"></li>
+            <li id="input-data"></li>
+        </ul>
+        <div class="progress">
+            <div id="prog-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+
     <div class="row" id="form">
         <div class="col-md-12" style="margin-top: 20px">
 
@@ -76,7 +88,7 @@
 
                 <div class="d-flex flex-row-reverse">
 
-                    <input type="submit" value="Reservieren">
+                    <input type="submit" id="next-btn" class="btn btn-secondary" value="Weiter" disabled>
 
                 </div>
 
@@ -176,6 +188,16 @@
 
 <script>
 
+    $("#input-date").change(function() {
+        $("#select-date").addClass("highlighted")
+        $("#prog-bar").css({"width": "33%"})
+    });
+
+    $("#input-time").change(function() {
+        $("#select-time").addClass("highlighted")
+        $("#prog-bar").css({"width": "66%"})
+    });
+
     $( "#input-table" ).click(function() {
         $("#table-select").show();
     });
@@ -189,6 +211,11 @@
         $("#input-table").val(table);
         $("#input-seats").val(seats.join(", "));
         $("#table-select").hide();
+        $("#select-table").addClass("highlighted")
+        $("#prog-bar").css({"width": "100%"})
+        $("#next-btn").attr({"disabled": null})
+        $("#next-btn").removeClass("btn-secondary")
+        $("#next-btn").addClass("btn-primary")
     }
 
 </script>

@@ -71,16 +71,16 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="input-date">Tisch:</label>
+                    <label class="col-sm-2 col-form-label" for="input-date">Tische:</label>
                     <div class="col-sm-10">
-                        <input class="form-control" style="background-color:#FFF !important;" readonly type="number" name="table" id="input-table">
+                        <input class="form-control" style="background-color:#FFF !important;" readonly type="text" name="table" id="input-table">
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="input-date">Plätze:</label>
                     <div class="col-sm-10">
-                        <input class="form-control" style="background-color:#FFF !important;" readonly type="text" name="seats" id="input-seats">
+                        <input class="form-control" style="background-color:#FFF !important;" readonly type="number" name="seats" id="input-seats">
                     </div>
                 </div>
 
@@ -101,7 +101,14 @@
     <div class="row" style="display: none" id="table-select">
 
         <div class="col-md-6 offset-md-3">
-            <img onclick="selectTable(5,[14,15])" class="img-fluid" src="./restaurant.png">
+            <h4>Wählen Sie unten im Restaurantplan einen oder mehrere freie Tische aus!</h4>
+            <h5>Sie können höchstens 10 Sitzplätze reservieren.</h5>
+
+            <canvas class="canvas-tables" id="table-selection-canvas" width='0px' height='0px'>
+                ERROR: Canvas not supported, try another browser.
+            </canvas>
+            
+            <script src="./table_selection.js"></script>
         </div>
 
     </div>
@@ -206,16 +213,31 @@
         $("#table-select").show();
     });
 
-    function selectTable(table, seats) {
-        console.log(seats.join(", "));
-        $("#input-table").val(table);
-        $("#input-seats").val(seats.join(", "));
-        $("#table-select").hide();
-        $("#select-table").addClass("highlighted")
-        $("#prog-bar").css({"width": "100%"})
-        $("#next-btn").attr({"disabled": null})
-        $("#next-btn").removeClass("btn-secondary")
-        $("#next-btn").addClass("btn-primary")
+    // This function gets called from JavaScript inside table_selection.js
+    function selectTables(tables, seatCount) {
+        // Parse array into comma-seperated list
+        let table_list = "";
+        for(let i = 0; i < tables.length; i++) {
+            table_list += (tables[i] + 1).toString(); // Increment IDs to start from 1
+            if(i != tables.length - 1)
+            table_list += ", ";
+        }
+        
+        $("#input-table").val(table_list);
+        $("#input-seats").val(seatCount);
+        
+        // TODO: Jemand der einen Plan hat, wie das UI reagieren soll, muss an diese Funktion nochmal ran!
+
+        if(seatCount > 0 && seatCount <= 10)
+            $("#next-btn").attr({"disabled": null})
+        else 
+            $("#next-btn").attr({"disabled": true})
+
+        //$("#select-table").addClass("highlighted")
+        //$("#table-select").hide();
+        //$("#prog-bar").css({"width": "100%"})
+        //$("#next-btn").removeClass("btn-secondary")
+        //$("#next-btn").addClass("btn-primary")
     }
 
 </script>

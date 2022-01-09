@@ -71,24 +71,26 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="input-date">Tische:</label>
+                    <label class="col-sm-2 col-form-label" for="input-date">Tische*:</label>
                     <div class="col-sm-10">
                         <input class="form-control" style="background-color:#FFF !important;" readonly type="text" name="table" id="input-table">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="input-date">Plätze:</label>
+                    <label class="col-sm-2 col-form-label" for="input-date">Plätze*:</label>
                     <div class="col-sm-10">
                         <input class="form-control" style="background-color:#FFF !important;" readonly type="number" name="seats" id="input-seats">
                     </div>
                 </div>
 
+                    <p>*: Optional</p>
+
                 </div>
 
                 <div class="d-flex flex-row-reverse">
 
-                    <input type="submit" id="next-btn" class="btn btn-secondary" value="Weiter" disabled>
+                    <input type="submit" onclick='$("#prog-bar").css({"width": "100%"})' id="next-btn" class="btn btn-secondary" value="Weiter" disabled>
 
                 </div>
 
@@ -107,7 +109,7 @@
             <canvas class="canvas-tables" id="table-selection-canvas" width='0px' height='0px'>
                 ERROR: Canvas not supported, try another browser.
             </canvas>
-            
+
             <script src="./table_selection.js"></script>
         </div>
 
@@ -156,7 +158,7 @@
 
                 <div class="d-flex flex-row-reverse">
 
-                    <input type="submit" value="Reservieren">
+                    <input type="submit" class="btn btn-secondary" value="Reservieren">
 
                 </div>
 
@@ -203,6 +205,9 @@
     $("#input-time").change(function() {
         $("#select-time").addClass("highlighted")
         $("#prog-bar").css({"width": "66%"})
+
+
+        $("#next-btn").attr({"disabled": null})
     });
 
     $( "#input-table" ).click(function() {
@@ -222,20 +227,24 @@
             if(i != tables.length - 1)
             table_list += ", ";
         }
-        
+
         $("#input-table").val(table_list);
         $("#input-seats").val(seatCount);
-        
+
+        if(seatCount > 10) {
+            alert("Sie können maximal 10 Plätze reservieren. Bitte entfernen Sie Tische aus Ihrer Auswahl.")
+        }
+
         // TODO: Jemand der einen Plan hat, wie das UI reagieren soll, muss an diese Funktion nochmal ran!
 
         if(seatCount > 0 && seatCount <= 10)
             $("#next-btn").attr({"disabled": null})
-        else 
+        else
             $("#next-btn").attr({"disabled": true})
 
-        //$("#select-table").addClass("highlighted")
+        $("#select-table").addClass("highlighted")
         //$("#table-select").hide();
-        //$("#prog-bar").css({"width": "100%"})
+        $("#prog-bar").css({"width": "100%"})
         //$("#next-btn").removeClass("btn-secondary")
         //$("#next-btn").addClass("btn-primary")
     }

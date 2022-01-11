@@ -40,7 +40,13 @@
 }
 
 #select-date::after {
-    content: "Datum und Uhrzeit ausgewählt";
+    content: "Datum ausgewählt";
+    text-align: center;
+    left: -35px;
+}
+
+#select-time::after {
+    content: "Uhrzeit ausgewählt";
     text-align: center;
     left: -35px;
 }
@@ -53,12 +59,6 @@
 
 #input-data::after {
     content: "Kontaktinformationen hinterlegt";
-    text-align: center;
-    left: -35px;
-}
-
-#food-reservation::after {
-    content: "Speisen auswählen";
     text-align: center;
     left: -35px;
 }
@@ -77,14 +77,7 @@
     height: auto;
 }
 
-.card {
-    transition: .3s;
-}
 
-.card:hover {
-    box-shadow: 8px 8px 8px darkgray;
-}
-
-.card.highlighted {
-    border: 3px solid green;
+body{
+    background-color: #C8C8C8;
 }

@@ -40,13 +40,7 @@
 }
 
 #select-date::after {
-    content: "Datum ausgewählt";
-    text-align: center;
-    left: -35px;
-}
-
-#select-time::after {
-    content: "Uhrzeit ausgewählt";
+    content: "Datum und Uhrzeit ausgewählt";
     text-align: center;
     left: -35px;
 }
@@ -63,6 +57,12 @@
     left: -35px;
 }
 
+#food-reservation::after {
+    content: "Speisen auswählen";
+    text-align: center;
+    left: -35px;
+}
+
 .form-progress .progress {
     height: 0.8rem;
     width: 100%;
@@ -75,4 +75,16 @@
 .canvas-tables {
     width: 100%;
     height: auto;
+}
+
+.card {
+    transition: .3s;
+}
+
+.card:hover {
+    box-shadow: 8px 8px 8px darkgray;
+}
+
+.card.highlighted {
+    border: 3px solid green;
 }

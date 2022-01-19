@@ -6,6 +6,10 @@ body {
     text-align: center;
 }
 
+.nav-link {
+    color: #FFF !important;
+}
+
 .pricelist {
     list-style: none;
 }

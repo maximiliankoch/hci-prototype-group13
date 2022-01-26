@@ -101,7 +101,7 @@
 
                 <div class="d-flex flex-row-reverse">
 
-                    <input type="submit" onclick='$("#prog-bar").css({"width": "66%"})' id="next-btn" class="btn btn-secondary" value="Weiter" disabled>
+                    <input type="submit" onclick='$("#prog-bar").css({"width": "66%"})' id="next-btn" class="btn btn-secondary" value="Weiter >" disabled>
 
                 </div>
 
@@ -174,9 +174,12 @@
 
                 </div>
 
-                <div class="d-flex flex-row-reverse">
+                <div class="d-flex justify-content-between">
 
-                    <input type="submit" class="btn btn-secondary" onclick='$("#prog-bar").css({"width": "100%"})' value="Weiter">
+                    <a class="btn btn-secondary" style="width: 93px;" onclick="$('#prog-bar').css({'width': '0%'}); $('#form').show();$('#table-select').show(); $('#contact-data-form').hide();">< Zurück</a>
+
+
+                    <input type="submit" class="btn btn-secondary" onclick='$("#prog-bar").css({"width": "100%"})' value="Weiter >">
 
                 </div>
 
@@ -319,7 +322,9 @@
 
                 <input type="hidden" name="formdata1" id="form1-input">
 
-                <div class="d-flex flex-row-reverse">
+                <div class="d-flex justify-content-between">
+
+                    <a class="btn btn-secondary" style="width: 93px;" onclick="$('#prog-bar').css({'width': '66%'}); $('#contact-data-form').show(); $('#select-food').hide();">< Zurück</a>
 
                     <input type="submit" class="btn btn-secondary" value="Reservieren">
 

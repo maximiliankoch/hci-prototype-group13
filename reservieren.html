@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="./reservieren.html">Reservieren</a>
+                            <a class="nav-link active" href="./reservieren.html">Reservieren</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./speisekarte.html">Speisekarte</a>
@@ -63,7 +63,7 @@
     <div class="row" id="form">
         <div class="col-md-12" style="margin-top: 20px">
 
-            <form onsubmit="$('#contact-data-form').show(); $('#form').hide(); $('#table-select').hide(); return false;">
+            <form id="form-reservieren" onsubmit="formReservierenSubmit(event); return false;">
 
                 <div class="col-md-4 offset-md-4">
 
@@ -136,7 +136,7 @@
     <div class="row" style="display: none" id="contact-data-form">
         <div class="col-md-12" style="margin-top: 20px">
 
-            <form method="post" action="erfolgreich.html" onsubmit="$('#select-food').show(); $('#contact-data-form').hide(); $('#table-select').hide(); return false;">
+            <form method="get" action="erfolgreich.html" onsubmit="$('#select-food').show(); $('#contact-data-form').hide(); $('#table-select').hide(); return false;">
 
                 <div class="col-md-4 offset-md-4 row">
 
@@ -190,7 +190,7 @@
     <div id="select-food" style="display: none;" class="row">
         <div class="col-md-12" style="margin-top: 20px">
 
-            <form method="post" action="erfolgreich.html" onsubmit="">
+            <form method="get" action="erfolgreich.html" onsubmit="">
 
                 
                 
@@ -316,15 +316,18 @@
                     </div>
                 </div>
 
+
+                <input type="hidden" name="formdata1" id="form1-input">
+
                 <div class="d-flex flex-row-reverse">
 
                     <input type="submit" class="btn btn-secondary" value="Reservieren">
 
                 </div>
 
-
             </form>
     </div>
+
 
     
 
@@ -350,6 +353,7 @@
     </div>
 
 
+</div>
 </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -418,6 +422,27 @@
         $("#prog-bar").css({"width": "66%"})
         //$("#next-btn").removeClass("btn-secondary")
         //$("#next-btn").addClass("btn-primary")
+    }
+
+
+    function saveForm1() {
+        let formdata = new FormData(document.getElementById('form-reservieren'));
+
+        let object = {};
+        formdata.forEach((value, key) => object[key] = value);
+        let json = JSON.stringify(object);
+        console.log(json);
+        $("#form1-input").val(json);
+
+        return false;
+    }
+
+    function formReservierenSubmit(e) {
+        e.preventDefault();
+        $('#contact-data-form').show();
+        $('#form').hide();
+        $('#table-select').hide();
+        saveForm1();
     }
 
 </script>

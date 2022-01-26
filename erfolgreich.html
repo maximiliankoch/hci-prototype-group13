@@ -49,6 +49,8 @@
             <h3>Reservierung erfolgreich</h3>
             <p>Ihre Reservierungsdaten wurden zur Bestätigung an yolo@email.de gesendet. </p>
             <p>Bei Fragen zur Reservierung, rufen Sie uns bitte an. </p>
+            <p><b>Ihre Reservierung:</b></p>
+            <p id="form1-data"></p>
         </div>
         <div class="col-md-4">
             <img style="max-width: 100%" src= "./shrimps.png">
@@ -77,8 +79,24 @@
     </div>
 
 </div>
+</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var formdata1 = url.searchParams.get("formdata1");
+    form1_obj = JSON.parse(formdata1);
+
+    $("#form1-data").html("Datum: " + new Date(form1_obj['date']).toLocaleDateString() + " Uhrzeit: " + form1_obj['time']);
+    if(form1_obj['table'] != "") {
+        $("#form1-data").html($("#form1-data").html() + "<br>Tisch: " + form1_obj['table'] + "<br>" + "Plätze: " + form1_obj['seats']);
+    }
+
+
+</script>
 </body>
 </html>

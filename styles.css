@@ -109,3 +109,22 @@ body {
 .table-value {
     width: 30%;
 }
+
+
+.button_deliver1 {
+    width: 30%;
+	height: 30%;
+	background-color: #4CAF50;
+}
+
+.button_deliver2 {
+    width: 30%;
+	height: 30%;
+	background-color: #008CBA;
+}
+
+.button_deliver3 {
+    width: 30%;
+	height: 30%;
+	background-color: #f44336;
+}

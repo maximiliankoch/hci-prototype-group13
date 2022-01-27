@@ -101,3 +101,11 @@ body {
 .card.highlighted {
     border: 3px solid green;
 }
+
+.table-key {
+    width: 70%;
+}
+
+.table-value {
+    width: 30%;
+}

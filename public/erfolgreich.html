@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Über uns - Am krassen Shrimp</title>
+    <title>Reservierung erfolgreich - Am krassen Shrimp</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./styles.css" rel="stylesheet">
+    <link href="./styles.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -28,38 +28,31 @@
                         <a class="nav-link" href="./liefern.html">Liefern</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./about.html">Über uns</a>
+                        <a class="nav-link" href="./about.html">Über uns</a>
                     </li>
                 </ul>
-                <div class="collapse navbar-collapse justify-content-end">
-                    <ul class="navbar-nav ">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./login.html">Login</a>
-                        </li>
-                    </ul>
-                </div>
+				<div class="collapse navbar-collapse justify-content-end">
+					<ul class="navbar-nav ">
+						<li class="nav-item">
+							<a class="nav-link" href="./login.html">Login</a>
+						</li>
+					</ul>
+				</div>
             </div>
         </div>
     </nav>
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8" style="margin-top: 20px">
-                <h3>Wer sind wir?</h3>
-                <h5>Wir sind ein junges und engagiertes Team, welches Ihnen die besten Shrimps in ganz Hannover anbieten möchte.</h5>
-                <h5>Wir freuen uns auf Sie!</h5>
-                <br>
-                <li>Berkehan, Chefkoch</li>
-                <li>Dennis, stellv. Koch</li>
-                <li>Joshua, Kellner</li>
-                <li>Karl, Kellner</li>
-                <li>Martin, Kellner</li>
-                <li>Maximilian, Kellner</li>
-                <br>
-                <h5>Bei Fragen erreichen Sie uns unter am-krassen-shrimp@email.de</h5>
+            <div class="col-md-8 text-center" style="margin-top: 20px">
+                <h3>Reservierung erfolgreich</h3>
+                <p>Ihre Reservierungsdaten wurden zur Bestätigung an yolo@email.de gesendet. </p>
+                <p>Bei Fragen zur Reservierung, rufen Sie uns bitte an. </p>
+                <p><b>Ihre Reservierung:</b></p>
+                <p id="form1-data"></p>
             </div>
             <div class="col-md-4">
-                <img src="public/images/shrimp.png">
+                <img style="max-width: 100%" src= "images/shrimp.png">
             </div>
         </div>
     </div>
@@ -84,8 +77,24 @@
     </div>
 
 </div>
+</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var formdata1 = url.searchParams.get("formdata1");
+    form1_obj = JSON.parse(formdata1);
+
+    $("#form1-data").html("Datum: " + new Date(form1_obj['date']).toLocaleDateString() + " Uhrzeit: " + form1_obj['time']);
+    if(form1_obj['table'] != "") {
+        $("#form1-data").html($("#form1-data").html() + "<br>Tisch: " + form1_obj['table'] + "<br>" + "Plätze: " + form1_obj['seats']);
+    }
+
+
+</script>
 </body>
 </html>

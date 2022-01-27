@@ -71,7 +71,7 @@ tsImgObj.onload = function() {
     // Draw!
     drawTableSelectionCanvas();
 };
-tsImgObj.src = "./restaurant.png";
+tsImgObj.src = "public/images/restaurant.png";
 
 tsCanvas.addEventListener("click", function(e) {
     let clickPos = getCanvasMouseCoords(e.pageX, e.pageY);
